@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Générateur de Motifs Géométriques</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        img {
+            max-width: 600px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Générateur de Motifs Géométriques</h1>
+
+    {% if not image %}
+    <form method="POST">
+        <label>Nombre de côtés :</label>
+        <input type="number" name="sides" min="3" max="20" required><br><br>
+
+        <label>Profondeur (répétitions) :</label>
+        <input type="number" name="depth" min="1" max="100" required><br><br>
+
+        <label>Taille initiale :</label>
+        <input type="number" name="size" min="10" max="300" required><br><br>
+
+        <label>Angle de rotation :</label>
+        <input type="number" name="angle" min="0" max="360" required><br><br>
+
+        <label>Couleur :</label>
+        <input type="text" name="color" placeholder="Ex : red, blue, green" required><br><br>
+
+        <label>Type de motif :</label>
+        <select name="pattern_type" required>
+            <option value="polygon">Polygone</option>
+            <option value="spiral">Spirale</option>
+            <option value="fractal">Fractale simple</option>
+        </select>
+        <br><br>
+
+        <button type="submit">Générer le motif</button>
+    </form>
+    {% endif %}
+
+    {% if image %}
+    <h2>Motif généré :</h2>
+    <img src="{{ image }}" alt="Motif Géométrique"><br><br>
+
+    <form method="GET">
+        <button type="submit">Recommencer</button>
+    </form>
+    {% endif %}
+</body>
+
+</html>
