@@ -19,7 +19,7 @@ def index():
         color = request.form.get("color", "blue")
         pattern_type = request.form.get("pattern_type", "polygon")  # Nouveau paramètre
 
-        # Nettoyage des anciennes images (optionnel mais recommandé)
+        # Nettoyage des anciennes images
         for file in glob.glob("static/images/*.png"):
             os.remove(file)
 
