@@ -55,7 +55,7 @@ def generate_pattern(sides=5, depth=10, size=100, angle=20, color='blue', patter
         t.pendown()
 
         total_steps = depth * sides
-        distance = size / total_steps  # Distance de départ plus proportionnelle
+        distance = size / total_steps 
 
         for i in range(total_steps):
             t.forward(distance * i)
@@ -63,12 +63,10 @@ def generate_pattern(sides=5, depth=10, size=100, angle=20, color='blue', patter
 
 
     elif pattern_type == 'fractal':
-    # Centrage du motif fractal
         t.penup()
         t.goto(0, 0)
         t.pendown()
 
-    # Appel de la fonction fractale avec profondeur fixée
         fractal_star(t, size, sides, depth=3)
 
 
